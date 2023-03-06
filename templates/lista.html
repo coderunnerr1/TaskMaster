@@ -1,0 +1,24 @@
+{% extends "template.html" %} 
+{% block conteudo%}
+        <td><a href="{{url_for('novo')}}" class="btn btn-primary btn-salvar">Novo</a></td>
+        <div class="container-fluid d-flex flex-wrap">
+        {% for tarefa in tarefas %}
+        <div class="card flex-grow-1" style="width: 18rem">
+            <div class="card-body">
+            <h5 class="card-title">{{ tarefa.tarefa }}</h5>
+            <p class="card-text">{{ tarefa.descricao }}</p>
+            </div>
+            <div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ tarefa.prazo }}</li>
+                <li class="list-group-item">{{ tarefa.status }}</li>
+            </ul>
+            <td>
+                <a href="{{ url_for('editar',id = tarefa.id)}}" class="btn btn-primary btn-salvar">Editar</a>
+                <a href="{{ url_for('deletar',id = tarefa.id)}}" class="btn btn-primary btn-salvar">Deletar</a>
+            </td>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+{%endblock%}
